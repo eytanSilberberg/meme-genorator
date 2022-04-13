@@ -28,9 +28,15 @@
         <div class="filter-by-wrapper">I am the filter wrapper</div>
     </section>
     <section class="meme-editor-wrapper layout flex">
-        <canvas width="500" height="500"></canvas>
-        <div class="meme-editor"><span>Change meme inner Text</span><input type="text"
-                onchange="onSetLineTxt(this.value)"></div>
+        <canvas width="500" height="500" tabindex="1"></canvas>
+        <div class="meme-editor"><span>Change meme inner Text</span>
+            <input type="text" onchange="onSetLineTxt(this.value)">
+            <input type="color" onchange="onSetTextColor(this.value)">
+            <button class="canvas-editor-button" onclick="onSetFontSize(-1)">-</button>
+            <button class="canvas-editor-button" onclick="onSetFontSize(1)">+</button>
+            <button class="canvas-editor-button" onclick="onSwitchLines()"><img class="arrows"
+                    src="imgs/editor-sybols/arrows.png" alt=""></button>
+        </div>
     </section>
     <section class="gallery-wrapper layout">I am the gallery wrapper</section>
     <footer class="flex justify-center align-center">

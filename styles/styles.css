@@ -10,6 +10,7 @@
 /* components */
 @import 'components/main-page/main-header.css';
 @import 'components/main-page/search-bar.css';
+@import 'components/main-page/editor.css';
 @import 'components/main-page/gallery.css';
 @import 'components/main-page/footer.css';
 

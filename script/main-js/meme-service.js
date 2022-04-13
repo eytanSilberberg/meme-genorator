@@ -7,9 +7,17 @@ function setInitialMeme() {
         lines: [
             {
                 txt: 'welcome to memeGene you prick',
-                size: 20,
+                size: 30,
                 align: 'left',
-                color: 'red'
+                color: 'white',
+                font: 'impact'
+            },
+            {
+                txt: 'EnterTxt',
+                size: 30,
+                align: 'left',
+                color: 'white',
+                font: 'impact'
             }
         ]
     }
@@ -22,6 +30,23 @@ function getMeme() {
 
 
 function setLineTxt(value) {
-    gMeme.lines[0].txt = value
+    gMeme.lines[gMeme.selectedLineIdx].txt = value
 
+}
+
+function SetTextColor(value) {
+    gMeme.lines[gMeme.selectedLineIdx].color = value
+}
+
+function setFontSize(diff) {
+    if (diff + gMeme.lines[gMeme.selectedLineIdx].size < 0 || diff + gMeme.lines.size > 50) return
+    gMeme.lines[gMeme.selectedLineIdx].size += diff
+}
+
+function switchLines() {
+    if (gMeme.selectedLineIdx + 1 > gMeme.lines.length - 1) {
+        gMeme.selectedLineIdx = 0
+    } else {
+        gMeme.selectedLineIdx++
+    }
 }

@@ -5,13 +5,16 @@ var imgNumber = 0
 
 
 function createImg() {
-    return { id: 1, url: `imgs/square-imgs/${++imgNumber}.jpg`, keywords: ['funny', 'cat'] }
+    return { id: makeId(), imgNum: ++imgNumber, url: `imgs/square-imgs/${imgNumber}.jpg`, keywords: ['funny', 'cat'] }
 }
 
 
 function getImgs() {
     if (!gImgs || gImgs.length === 0) {
-        gImgs = [createImg(), createImg()]
+        for (let i = 0; i < 18; i++) {
+            gImgs.push(createImg())
+        }
+
     }
     return gImgs
 }
