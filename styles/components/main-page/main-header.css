@@ -1,0 +1,23 @@
+header {
+    height: 5rem;
+
+}
+
+.header-content-wrapper {
+    height: 100%;
+
+}
+
+.logo-wrapper {
+
+    width: 150px;
+}
+
+.logo {
+    width: 100%;
+}
+
+.pages-list li a {
+    padding-inline-end: 2rem;
+    color: var(--clr1);
+}
