@@ -1,5 +1,14 @@
 .gallery-wrapper {
+    padding-top: 50px;
     height: 100vh;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 13rem));
+    grid-gap: 20px;
 
+}
+
+.gallery-img {
+    border-radius: 15px;
+    width: 12.5rem;
+    height: 12.5rem;
 }

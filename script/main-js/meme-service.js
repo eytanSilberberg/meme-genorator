@@ -23,4 +23,5 @@ function getMeme() {
 
 function setLineTxt(value) {
     gMeme.lines[0].txt = value
+
 }

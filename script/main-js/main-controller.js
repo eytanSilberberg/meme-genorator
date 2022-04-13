@@ -7,6 +7,8 @@ function onInit() {
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     elImg = document.querySelector('.starting-img')
+    renderGallery()
+
     setInitialMeme()
     const meme = getMeme()
     const { selectedImgId } = meme
@@ -18,7 +20,7 @@ function onInit() {
     // drawText(txt, 20, 50)
 }
 function renderMeme(txt, picNum) {
-    elImg.src = `imgs/meme-imgs-square/${picNum}.jpg`
+    elImg.src = `imgs/square-imgs/${picNum}.jpg`
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     drawText(txt, 250, 50)
 }
@@ -30,7 +32,7 @@ function renderMeme(txt, picNum) {
 function drawImgFromLocal() {
     // gCtx.beginPath()
     var img = new Image()
-    img.src = 'imgs/meme-imgs-square/1.jpg';
+    img.src = 'imgs/square-imgs/1.jpg';
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
@@ -61,4 +63,14 @@ function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     // You may clear part of the canvas
     // gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height/4)
+}
+
+function renderGallery() {
+    const elGallery = document.querySelector('.gallery-wrapper')
+    var imgs = getImgs()
+    var strHTML = imgs.map(img => `
+    <img class="gallery-img" src="${img.url} "alt="">`
+    )
+    elGallery.innerHTML = strHTML.join('')
+
 }
