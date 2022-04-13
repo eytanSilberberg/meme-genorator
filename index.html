@@ -9,7 +9,7 @@
     <title>memeGenorator</title>
 </head>
 
-<body>
+<body onload="onInit()">
     <header>
         <div class="header-content-wrapper layout flex space-between align-center">
             <div class="logo-wrapper"><img class="logo" src="imgs/LOGO/LOGO.png" alt=""></div>
@@ -27,10 +27,21 @@
         </div>
         <div class="filter-by-wrapper">I am the filter wrapper</div>
     </section>
+    <section class="meme-editor-wrapper layout flex">
+        <canvas width="500" height="500"></canvas>
+        <div class="meme-editor">I am the editor</div>
+    </section>
     <section class="gallery-wrapper layout flex">I am the gallery wrapper</section>
     <footer class="flex justify-center align-center">
         <div class="footer-wrapper layout "> I am the Footer</div>
     </footer>
+
+    <img src="imgs/meme-imgs-square/1.jpg" alt="" class="starting-img" hidden>
+    <script src="script/services/utils.js"></script>
+    <script src="script/services/storage-service.js"></script>
+    <script src="script/services/i18n-service.js"></script>
+    <script src="script/main-js/meme-service.js"></script>
+    <script src="script/main-js/meme-controller.js"></script>
 </body>
 
 </html>
