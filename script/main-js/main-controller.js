@@ -13,24 +13,24 @@ function onInit() {
     const meme = getMeme()
     const { selectedImgId } = meme
     const { txt } = meme.lines[meme.selectedLineIdx]
-    const { color } = meme.lines[meme.selectedLineIdx]
-    const { size } = meme.lines[meme.selectedLineIdx]
-    // gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    const { pos } = meme.lines[meme.selectedLineIdx]
 
-    renderMeme(txt, selectedImgId, color, size)
 
-    // drawText(txt, 20, 50)
+    renderMeme(txt, selectedImgId, pos.x, pos.y)
+
 }
-function renderMeme(txt, picNum, color, size) {
+function renderMeme(txt, picNum, posX, posY) {
+    const meme = getMeme()
+
     elImg.src = `imgs/square-imgs/${picNum}.jpg`
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     saveAndRestoreExample()
-    // drawText(txt, 30, 30, color, size)
+    drawRect(txt, posX, posY)
+
+
 }
 
-// function renderMeme(img) {
-//     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-// }
+
 
 function drawImgFromLocal() {
     // gCtx.beginPath()
@@ -41,31 +41,21 @@ function drawImgFromLocal() {
     }
 }
 
-function drawText(txt, x, y, color, fontSize) {
-    gCtx.beginPath()
 
-    gCtx.lineWidth = 1;
-    gCtx.textBaseline = 'middle';
-    gCtx.textAlign = 'start';
-    gCtx.fillStyle = color;
-    gCtx.font = `${fontSize}px impact`;
-    gCtx.fillText(txt, x, y);
-    gCtx.strokeStyle = 'black';
-    gCtx.strokeText(txt, x, y);
-}
 
 function onSetLineTxt(value) {
     const meme = getMeme()
     setLineTxt(value)
     clearCanvas
     const { selectedImgId } = meme
-    renderMeme(value, selectedImgId)
+    const { txt } = meme.lines[meme.selectedLineIdx]
+    const { pos } = meme.lines[meme.selectedLineIdx]
+    renderMeme(txt, selectedImgId, pos.x, pos.y)
 }
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-    // You may clear part of the canvas
-    // gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height/4)
+
 }
 
 function renderGallery() {
@@ -82,8 +72,6 @@ function renderGallery() {
 function onSelectImg(idNum) {
 
     var imgs = getImgs()
-    // debugger
-
     var requestedImg = imgs.find(img => img.id === idNum)
     const { imgNum } = requestedImg
     elImg.src = requestedImg.url
@@ -92,17 +80,20 @@ function onSelectImg(idNum) {
     const meme = getMeme()
 
     meme.selectedImgId = imgNum
-    renderMeme('EnterTxt', imgNum)
-    // gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+
+    const { pos } = meme.lines[meme.selectedLineIdx]
+    renderMeme('EnterTxt', imgNum, pos.x, pos.y)
 }
 
 function onSetTextColor(value) {
     SetTextColor(value)
+
     const meme = getMeme()
     const { txt } = meme.lines[meme.selectedLineIdx]
+    const { pos } = meme.lines[meme.selectedLineIdx]
     const { selectedImgId } = meme
 
-    renderMeme(txt, selectedImgId, value)
+    renderMeme(txt, selectedImgId, pos.x, pos.y)
 
 
 }
@@ -110,45 +101,79 @@ function onSetTextColor(value) {
 function onSetFontSize(diff) {
     setFontSize(diff)
     const meme = getMeme()
-    const { txt } = meme.lines[meme.selectedLineIdx]
     const { selectedImgId } = meme
-    const { color } = meme.lines[meme.selectedLineIdx]
-    const { size } = meme.lines[meme.selectedLineIdx]
+    const { txt } = meme.lines[meme.selectedLineIdx]
+    const { pos } = meme.lines[meme.selectedLineIdx]
 
-    renderMeme(txt, selectedImgId, color, size)
+    renderMeme(txt, selectedImgId, pos.x, pos.y)
 }
 
 function onSwitchLines() {
     switchLines()
+    const meme = getMeme()
+    const { selectedImgId } = meme
+    const { txt } = meme.lines[meme.selectedLineIdx]
+    const { pos } = meme.lines[meme.selectedLineIdx]
+    clearCanvas()
+    renderMeme(txt, selectedImgId, pos.x, pos.y)
+
+
 }
 
 function saveAndRestoreExample() {
     const meme = getMeme()
+
     const fontTxt1 = meme.lines[0].txt
     const fontStyle1 = meme.lines[0].font
     const fontSize1 = meme.lines[0].size
     const fontColor1 = meme.lines[0].color
     const fontAlign1 = meme.lines[0].color
+    const x1 = meme.lines[0].pos.x
+    const y1 = meme.lines[0].pos.y
 
     const fontTxt2 = meme.lines[1].txt
     const fontStyle2 = meme.lines[1].font
     const fontSize2 = meme.lines[1].size
     const fontColor2 = meme.lines[1].color
     const fontAlign2 = meme.lines[1].align
+    const x2 = meme.lines[1].pos.x
+    const y2 = meme.lines[1].pos.y
 
     gCtx.font = `${fontSize1}px ${fontStyle1}`;
 
     gCtx.fillStyle = `${fontColor1}`;
-    gCtx.fillText(fontTxt1, 10, 50);
-    gCtx.strokeText(`${fontTxt1}`, 10, 50);
-    // gCtx.textAlign = 'left';
+    gCtx.fillText(fontTxt1, x1, y1);
+    gCtx.strokeText(`${fontTxt1}`, x1, y1);
     gCtx.save();
 
     gCtx.font = `${fontSize2}px ${fontStyle2}`;
     gCtx.fillStyle = `${fontColor2}`;
-    gCtx.fillText(`${fontTxt2}`, 10, 400);
-    gCtx.strokeText(`${fontTxt2}`, 10, 400);
-    // gCtx.textAlign = 'left';
-    // gCtx.restore();
-    // gCtx.strokeText('Back to previous', 10, 150);
+    gCtx.fillText(`${fontTxt2}`, x2, y2);
+    gCtx.strokeText(`${fontTxt2}`, x2, y2);
 }
+
+function drawRect(txt, x, y) {
+
+    const textWidth = gCtx.measureText(txt).width
+    gCtx.rect(x, y + 5, textWidth, 3);
+    gCtx.fillStyle = 'white';
+    gCtx.fillRect(x, y + 5, textWidth, 3);
+
+}
+
+
+
+
+
+// function drawText(txt, x, y, color, fontSize) {
+//     // gCtx.beginPath()
+
+//     gCtx.lineWidth = 1;
+//     gCtx.textBaseline = 'middle';
+//     gCtx.textAlign = 'start';
+//     gCtx.fillStyle = color;
+//     gCtx.font = `${fontSize}px impact`;
+//     gCtx.fillText(txt, x, y);
+//     gCtx.strokeStyle = 'black';
+//     gCtx.strokeText(txt, x, y);
+// }

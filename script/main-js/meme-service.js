@@ -10,14 +10,16 @@ function setInitialMeme() {
                 size: 30,
                 align: 'left',
                 color: 'white',
-                font: 'impact'
+                font: 'impact',
+                pos: { x: 10, y: 50 }
             },
             {
                 txt: 'EnterTxt',
                 size: 30,
                 align: 'left',
                 color: 'white',
-                font: 'impact'
+                font: 'impact',
+                pos: { x: 10, y: 400 }
             }
         ]
     }
