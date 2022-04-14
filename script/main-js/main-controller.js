@@ -16,7 +16,7 @@ function onInit() {
 function renderMeme() {
     const meme = getMeme()
     const { selectedImgId } = meme
-    const { txt, pos } = meme.lines[meme.selectedLineIdx]
+    const { txt, pos,size } = meme.lines[meme.selectedLineIdx]
 
 
     elImg.src = `imgs/square-imgs/${selectedImgId}.jpg`
@@ -25,22 +25,24 @@ function renderMeme() {
     // saveAndRestoreExample()
     meme.lines.forEach(function (line, i) { 
         const currLine=meme.lines[i]
-        const{txt,pos,color,size}=currLine
-        drawText(txt, pos.x, pos.y,color,size) })
-        drawRect(txt,pos.x,pos.y+10)
+        const{txt,pos,color,size,font}=currLine
+        let sameSize=size
+        drawText(txt, pos.x, pos.y,color,size,font) 
+    })
+    drawRect(txt,pos.x,pos.y+size/2)
 
 }
 
 // ******ACTIONS IN EVERY MEME RENDOR*********
 
-function drawText(txt, x, y, color, fontSize) {
+function drawText(txt, x, y, color, fontSize,fontStyle) {
     gCtx.beginPath()
 
     gCtx.lineWidth = 1;
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = 'start';
     gCtx.fillStyle = color;
-    gCtx.font = `${fontSize}px impact`;
+    gCtx.font = `${fontSize}px ${fontStyle}`;
     gCtx.fillText(txt, x, y);
     gCtx.strokeStyle = 'black';
     gCtx.strokeText(txt, x, y);
@@ -80,7 +82,7 @@ function renderGallery() {
     const elGallery = document.querySelector('.gallery-wrapper')
     var imgs = getImgs()
     var strHTML = imgs.map(img => `
-    <img onclick="onSelectImg('${img.id}')" class="gallery-img" src="${img.url} "alt="">`
+    <img  onclick="onSelectImg('${img.id}')" class="gallery-img" src="${img.url} "alt="">`
     )
     elGallery.innerHTML = strHTML.join('')
 
@@ -88,6 +90,8 @@ function renderGallery() {
 
 
 function onSelectImg(idNum) {
+    const elEditor=document.querySelector('.meme-editor-wrapper')
+    elEditor.classList.remove('hide')
 
     var imgs = getImgs()
     var requestedImg = imgs.find(img => img.id === idNum)
@@ -140,6 +144,24 @@ function onMoveTextVertical(diff) {
 function onAddLine(){
     addLine()
     renderMeme()
+}
+function onDeleteLine(){
+    console.log('hh')
+    deleteLine()
+    renderMeme()
+}
+
+
+function onDownloadMeme(elLink){
+    const data = gElCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'paint.jpg'
+
+}
+
+function onCloseModal(){
+    const elEditor=document.querySelector('.meme-editor-wrapper')
+    elEditor.classList.add('hide')
 }
 
 

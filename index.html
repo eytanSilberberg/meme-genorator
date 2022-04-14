@@ -21,49 +21,75 @@
             </div>
         </div>
     </header>
-    <section class="search-wrapper layout flex space-between">
-        <div class="search-by-wrapper">
-            <span>Enter search by</span><input type="text">
-        </div>
-        <div class="filter-by-wrapper">I am the filter wrapper</div>
-    </section>
-    <section class="meme-editor-wrapper layout flex">
-        <canvas width="500" height="500" tabindex="1"></canvas>
-        <div class="meme-editor"><span>Change meme inner Text</span>
-            <input type="text" onchange="onSetLineTxt(this.value)">
-            <input type="color" onchange="onSetTextColor(this.value)">
-            <button class="canvas-editor-button" onclick="onSetFontSize(-1)">-</button>
-            <button class="canvas-editor-button" onclick="onSetFontSize(1)">+</button>
-            <button class="canvas-editor-button" onclick="onSwitchLines()"><img class="editor-img"
-                    src="imgs/editor-sybols/icons8-up-down-arrow-50.png" alt=""></button>
-            <button onclick="onChangeTextAlign('left')" class="canvas-editor-button"><img class="editor-img"
-                    src="imgs/editor-sybols/icons8-align-left-50.png" alt=""></button>
-            <button onclick="onChangeTextAlign('center')" class="canvas-editor-button"><img class="editor-img"
-                    src="imgs/editor-sybols/icons8-align-justify-50.png" alt=""></button>
-            <button onclick="onChangeTextAlign('end')" class="canvas-editor-button"><img class="editor-img"
-                    src="imgs/editor-sybols/icons8-align-right-50.png" alt=""></button>
-            <select name="font-family" id="" onchange="onChangeFontFamily(this.value)">
-                <option value="impact">Impact</option>
-                <option value="helvetica">Helvetica</option>
-                <option value="helvetica Neue">Helvetica Neue</option>
-                <option value="Courier New">Courier New</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Arial">Arial</option>
-            </select>
-            <button onclick="onMoveTextVertical(10)"><img src="imgs/editor-sybols/icons8-down-50.png" class="editor-img"
-                    alt=""></button>
-            <button onclick="onMoveTextVertical(-10)"><img src="imgs/editor-sybols/icons8-up-50.png" class="editor-img"
-                    alt=""></button>
 
-            <button onclick="onAddLine()">Add Line</button>
-            <button onclick="onDeleteLine()">Delete Line</button>
-
+    <section class="search-section">
+        <div class="search-section-wrapper layout flex space-between">
+            <div><span>Enter search by</span><input type="text"></div>
+            <div class="filter-by-wrapper">I am the filter wrapper</div>
         </div>
     </section>
     <section class="gallery-wrapper layout">I am the gallery wrapper</section>
     <footer class="flex justify-center align-center">
         <div class="footer-wrapper layout "> I am the Footer</div>
     </footer>
+
+
+
+    <section class="meme-editor-wrapper  flex space-between hide">
+        <div class="modal flex layout">
+            <button onclick="onCloseModal()" class="close-modal">X</button>
+            <div class="canvas-container">
+                <canvas width="450" height="450" tabindex="1"></canvas>
+            </div>
+            <div class="meme-editor">
+                <div class="flex column justify-center align-center flex column">
+                    <span>Change meme inner Text</span>
+                    <input type="text" onchange="onSetLineTxt(this.value)">
+                </div>
+                <div class="color-picker flex justify-center align-center">
+                    <span>Choose a color</span>
+                    <input type="color" onchange="onSetTextColor(this.value)">
+                </div>
+                <div class="font-size-buttons">
+                    <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(1)">+</button>
+                    <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(-1)">-</button>
+                </div>
+                <button class="canvas-editor-button" onclick="onSwitchLines()"><img class="editor-img"
+                        src="imgs/editor-sybols/icons8-up-down-arrow-50.png" alt=""></button>
+                <div class="change-text-align-buttons">
+                    <button onclick="onChangeTextAlign('start')" class="canvas-editor-button"><img class="editor-img"
+                            src="imgs/editor-sybols/icons8-align-left-50.png" alt=""></button>
+                    <button onclick="onChangeTextAlign('center')" class="canvas-editor-button"><img class="editor-img"
+                            src="imgs/editor-sybols/icons8-align-justify-50.png" alt=""></button>
+                    <button onclick="onChangeTextAlign('end')" class="canvas-editor-button"><img class="editor-img"
+                            src="imgs/editor-sybols/icons8-align-right-50.png" alt=""></button>
+                </div>
+                <div class="move-lines-buttons">
+                    <button onclick="onMoveTextVertical(-10)"><img src="imgs/editor-sybols/icons8-up-50.png"
+                            class="editor-img" alt=""></button>
+                    <button onclick="onMoveTextVertical(10)"><img src="imgs/editor-sybols/icons8-down-50.png"
+                            class="editor-img" alt=""></button>
+                </div>
+                <select name="font-family" id="" onchange="onChangeFontFamily(this.value)">
+                    <option value="impact">Impact</option>
+                    <option value="helvetica">Helvetica</option>
+                    <option value="helvetica Neue">Helvetica Neue</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Arial">Arial</option>
+                </select>
+                <div class="line-amount-wrapper flex justify-center align-center">
+                    <a class="designed-buttons" href="#" onclick="onAddLine()">Add Line</a>
+                    <a class="designed-buttons" href="#" onclick="onDeleteLine()">Delete Line</a>
+                </div>
+
+                <a class="designed-buttons download-button download-button flex justify-center align-center " href="#"
+                    onclick="onDownloadMeme(this)" download="meme.jpg">Download
+                    meme</a>
+
+            </div>
+        </div>
+    </section>
 
     <img src="imgs/square-imgs/1.jpg" alt="" class="starting-img" hidden>
     <script src="script/services/utils.js"></script>

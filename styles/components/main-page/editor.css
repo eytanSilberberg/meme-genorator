@@ -1,10 +1,81 @@
-.canvas-editor-button {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+.meme-editor-wrapper {
+    position: fixed;
+    background-color: var(--clr3);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 2rem;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.editor-img {
-    width: 100%;
-    height: 100%;
+
+
+canvas {
+    margin-inline-end: 2rem;
+}
+
+.meme-editor {
+    display: grid;
+    font-size: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+
+}
+
+.font-size-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.font-size-button {
+    width: 30px;
+    height: 30px;
+    /* font-size: 20px; */
+}
+
+.line-amount-wrapper {
+    flex-direction: column;
+}
+
+.line-amount-wrapper :first-child {
+    margin-bottom: 10px;
+    color: black;
+    background-color: antiquewhite;
+}
+
+.line-amount-wrapper :last-child {
+    color: black;
+    background-color: coral;
+}
+
+.download-button {
+    background-color: blueviolet;
+    color: aliceblue;
+}
+
+.designed-buttons:hover {
+    color: rgb(80, 176, 176);
+}
+
+.font-size-buttons>* {
+    width: 50px;
+    height: 50px;
+}
+
+.hide {
+    display: none;
+}
+
+.close-modal {
+    position: absolute;
+    top: 50px;
+    right: 50px;
 }

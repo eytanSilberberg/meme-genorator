@@ -50,3 +50,15 @@
 .fa.fa-dribble::before {
     content: "\f17d";
 }
+
+.designed-buttons {
+    box-sizing: content-box;
+    padding: 0 20px;
+    text-align: center;
+    width: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid var(--clr2);
+    border-radius: 30px;
+
+}

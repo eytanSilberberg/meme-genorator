@@ -1,5 +1,8 @@
 'use strict'
 var gMeme
+
+
+
 function setInitialMeme() {
     gMeme = {
         selectedImgId: 1,
@@ -7,7 +10,7 @@ function setInitialMeme() {
         lines: [
             {
                 txt: 'welcome to memeGene you prick',
-                size: 30,
+                size: 20,
                 align: 'center',
                 color: 'white',
                 font: 'impact',
@@ -15,7 +18,7 @@ function setInitialMeme() {
             },
             {
                 txt: 'EnterTxt',
-                size: 30,
+                size: 20,
                 align: 'left',
                 color: 'white',
                 font: 'impact',
@@ -48,21 +51,21 @@ function SetTextColor(value) {
 }
 
 function setFontSize(diff) {
-    const currLine = gMeme.lines[gMeme.selectedLineIdx]
-    if (diff + currLine.size < 0 || diff + gMeme.lines.size > 50) return
-    currLine.size += diff
+    if (diff + gMeme.lines[gMeme.selectedLineIdx].size < 0 || diff + gMeme.lines.size > 50) return
+    gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
 function switchLines() {
     const currLine = gMeme.selectedLineIdx
-    if (currLine + 1 > gMeme.lines.length - 1) {
-        currLine = 0
+    if (gMeme.selectedLineIdx + 1 > gMeme.lines.length - 1) {
+        gMeme.selectedLineIdx = 0
     } else {
-        currLine++
+        gMeme.selectedLineIdx++
     }
 }
 
 function changeFontFamily(value) {
+    console.log('hh')
     gMeme.lines[gMeme.selectedLineIdx].font = value
 }
 
@@ -96,3 +99,38 @@ function createLine() {
     }
     return line
 }
+
+function addLine() {
+    gMeme.lines.push(createLine())
+}
+
+function createLine() {
+    const canvasInfo = getCanvasInfo()
+    const line = {
+        txt: 'Enter text',
+        size: 30,
+        align: 'center',
+        color: 'white',
+        font: 'impact',
+        pos: { x: 10, y: canvasInfo.gElCanvas.height / 2 }
+    }
+    return line
+}
+function deleteLine() {
+    console.log('hh')
+    const currLine = gMeme.selectedLineIdx
+    gMeme.lines.splice(currLine, 1)
+    gMeme.selectedLineIdx = 0
+}
+
+function getLineById(id) {
+    var line = gMeme.lines.find(book => book.id === id)
+    return line
+}
+
+function getLineIdx(id) {
+    var requestedLineIdx = gMeme.lines.findIndex(line => line.id === id)
+    return requestedLineIdx
+}
+
+

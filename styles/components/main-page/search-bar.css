@@ -1,0 +1,10 @@
+.search-section {
+    background-color: #2a9d8f;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+}
+
+.search-section-wrapper span {
+    margin-inline-end: 0.5rem;
+}
