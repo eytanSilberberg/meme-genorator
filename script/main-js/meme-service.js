@@ -11,18 +11,18 @@ function setInitialMeme() {
             {
                 txt: 'welcome to memeGene you prick',
                 size: 20,
-                align: 'center',
+                align: 'start',
                 color: 'white',
                 font: 'impact',
-                pos: { x: 10, y: 50 }
+                pos: { x: 80, y: 50 }
             },
             {
                 txt: 'EnterTxt',
                 size: 20,
-                align: 'left',
+                align: 'start',
                 color: 'white',
                 font: 'impact',
-                pos: { x: 10, y: 400 }
+                pos: { x: 80, y: 400 }
             }
         ]
     }

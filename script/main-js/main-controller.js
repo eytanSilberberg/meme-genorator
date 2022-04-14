@@ -25,9 +25,9 @@ function renderMeme() {
     // saveAndRestoreExample()
     meme.lines.forEach(function (line, i) { 
         const currLine=meme.lines[i]
-        const{txt,pos,color,size,font}=currLine
+        const{txt,pos,color,size,font,align}=currLine
         let sameSize=size
-        drawText(txt, pos.x, pos.y,color,size,font) 
+        drawText(txt, pos.x, pos.y,color,size,font,align) 
     })
     drawRect(txt,pos.x,pos.y+size/2)
 
@@ -35,12 +35,12 @@ function renderMeme() {
 
 // ******ACTIONS IN EVERY MEME RENDOR*********
 
-function drawText(txt, x, y, color, fontSize,fontStyle) {
+function drawText(txt, x, y, color, fontSize,fontStyle,alignValue) {
     gCtx.beginPath()
 
     gCtx.lineWidth = 1;
     gCtx.textBaseline = 'middle';
-    gCtx.textAlign = 'start';
+    gCtx.textAlign = alignValue;
     gCtx.fillStyle = color;
     gCtx.font = `${fontSize}px ${fontStyle}`;
     gCtx.fillText(txt, x, y);
@@ -92,6 +92,8 @@ function renderGallery() {
 function onSelectImg(idNum) {
     const elEditor=document.querySelector('.meme-editor-wrapper')
     elEditor.classList.remove('hide')
+    const elShadow=document.querySelector('.shadow')
+    elShadow.classList.add('appear')
 
     var imgs = getImgs()
     var requestedImg = imgs.find(img => img.id === idNum)
