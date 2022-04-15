@@ -35,17 +35,17 @@
 
 
 
-    <section class="meme-editor-wrapper flex hide">
+    <section class="meme-editor-wrapper flex justify-center align-center hide">
         <!-- shadow -->
         <div class="shadow show-shadow"></div>
         <!-- modal -->
-        <div class="modal-container flex justify-center align-center">
-            <div class="modal flex layout">
+        <div class="modal-container flex justify-center ">
+            <div class="modal flex layout justify-center align-center">
 
+                <button onclick="onCloseModal()" class="close-modal">X</button>
                 <!-- canvas -->
                 <div class="canvas-container flex justify-center align-center">
-                    <button onclick="onCloseModal()" class="close-modal">X</button>
-                    <canvas width="400" height="400" tabindex="1" class="greater-canvas"></canvas>
+                    <canvas width="500" height="500" tabindex="1" class="greater-canvas"></canvas>
 
                 </div>
 
@@ -64,9 +64,9 @@
                             <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(1)">+</button>
                             <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(-1)">-</button>
                         </div>
-                        <div class="flex align-center justify-center">
+                        <!-- <div class="flex align-center justify-center">
                             <button class="canvas-editor-button" onclick="onSwitchLines()">⇵</button>
-                        </div>
+                        </div> -->
                         <div class=" change-text-align-buttons flex justify-center align-center">
                             <button onclick="onChangeTextAlign('start')" class="canvas-editor-button"><img
                                     class="editor-img" src="imgs/editor-sybols/icons8-align-left-24.png"
@@ -79,6 +79,7 @@
                                     alt=""></button>
                         </div>
                         <div class="move-lines-buttons flex justify-center align-center">
+                            <button class="canvas-editor-button" onclick="onSwitchLines()">⇵</button>
                             <button onclick="onMoveTextVertical(-10)">⇧</button>
                             <button onclick="onMoveTextVertical(10)">⇩</button>
                         </div>
@@ -93,7 +94,7 @@
                             </select>
                         </div>
                         <div class="line-amount-wrapper flex justify-center align-center">
-                            <a class="designed-buttons" href="#" onclick="onAddLine()">Add Line</a>
+                            <a class="designed-buttons" href="#" onclick="onAddLine()">Add <br> Line</a>
                             <a class="designed-buttons" href="#" onclick="onDeleteLine()">Delete Line</a>
                         </div>
                         <div class="flex justify-center align-center">

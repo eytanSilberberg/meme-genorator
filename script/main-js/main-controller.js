@@ -10,14 +10,16 @@ function onInit() {
     elImg = document.querySelector('.starting-img')
     
     renderGallery()
-    var render=function (){
-        var canvasWidth=gCtx.canvas.width=document.documentElement.clientWidth*0.4
-        gCtx.canvas.height=canvasWidth
-    }
     window.addEventListener("resize",render)
     window.addEventListener("resize",renderMeme)
+    render()
+    // window.addEventListener("resize",render)
     setInitialMeme()
     renderMeme()
+}
+var render=function (){
+    var canvasWidth=gCtx.canvas.width=document.documentElement.offsetWidth*0.4
+    gCtx.canvas.height=canvasWidth
 }
 
 

@@ -11,11 +11,11 @@ function setInitialMeme() {
         lines: [
             {
                 txt: 'welcome to memeGene you prick',
-                size: 20,
+                size: canvasInfo.gElCanvas.width / 20,
                 align: 'start',
                 color: 'white',
                 font: 'impact',
-                pos: { x: 80, y: 50 }
+                pos: { x: 10, y: 50 }
             }
             // {
             //     txt: 'EnterTxt',
@@ -91,11 +91,11 @@ function createLine() {
     const canvasInfo = getCanvasInfo()
     const line = {
         txt: 'Enter text',
-        size: 30,
+        size: canvasInfo.gElCanvas.width / 20,
         align: 'start',
         color: 'white',
         font: 'impact',
-        pos: { x: 80, y: canvasInfo.gElCanvas.height / 2 }
+        pos: { x: 10, y: canvasInfo.gElCanvas.height / 2 }
     }
     return line
 }

@@ -4,7 +4,7 @@
 }
 
 html {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 body {
@@ -21,6 +21,10 @@ header {
     background-color: var(--clr2);
 }
 
+canvas {
+    border-radius: 30px;
+}
+
 footer {
     width: 100%;
 }
@@ -29,8 +33,9 @@ a {
     text-decoration: none;
 }
 
-@media (min-width:600px) {
+@media (min-width:750px) {
     html {
-        font-size: 14px;
+        font-size: 18px;
     }
+
 }
