@@ -94,6 +94,8 @@ function onSelectImg(idNum) {
     elEditor.classList.remove('hide')
     const elShadow=document.querySelector('.shadow')
     elShadow.classList.add('appear')
+    const elModalContainer=document.querySelector('.modal-container')
+    elModalContainer.classList.add('appear')
 
     var imgs = getImgs()
     var requestedImg = imgs.find(img => img.id === idNum)
@@ -164,6 +166,10 @@ function onDownloadMeme(elLink){
 function onCloseModal(){
     const elEditor=document.querySelector('.meme-editor-wrapper')
     elEditor.classList.add('hide')
+    const elShadow=document.querySelector('.shadow')
+    elShadow.classList.remove('appear')
+    const elModalContainer=document.querySelector('.modal-container')
+    elModalContainer.classList.remove('appear')
 }
 
 
