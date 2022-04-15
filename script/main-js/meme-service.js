@@ -4,6 +4,7 @@ var gMeme
 
 
 function setInitialMeme() {
+    const canvasInfo = getCanvasInfo()
     gMeme = {
         selectedImgId: 1,
         selectedLineIdx: 0,
@@ -15,15 +16,15 @@ function setInitialMeme() {
                 color: 'white',
                 font: 'impact',
                 pos: { x: 80, y: 50 }
-            },
-            {
-                txt: 'EnterTxt',
-                size: 20,
-                align: 'start',
-                color: 'white',
-                font: 'impact',
-                pos: { x: 80, y: 400 }
             }
+            // {
+            //     txt: 'EnterTxt',
+            //     size: 20,
+            //     align: 'start',
+            //     color: 'white',
+            //     font: 'impact',
+            //     pos: { x: 80, y: canvasInfo.gElCanvas.height - 50 }
+            // }
         ]
     }
 }
@@ -86,33 +87,15 @@ function moveTextVertical(diff) {
 function addLine() {
     gMeme.lines.push(createLine())
 }
-
 function createLine() {
     const canvasInfo = getCanvasInfo()
     const line = {
         txt: 'Enter text',
         size: 30,
-        align: 'center',
+        align: 'start',
         color: 'white',
         font: 'impact',
-        pos: { x: 10, y: canvasInfo.gElCanvas.height / 2 }
-    }
-    return line
-}
-
-function addLine() {
-    gMeme.lines.push(createLine())
-}
-
-function createLine() {
-    const canvasInfo = getCanvasInfo()
-    const line = {
-        txt: 'Enter text',
-        size: 30,
-        align: 'center',
-        color: 'white',
-        font: 'impact',
-        pos: { x: 10, y: canvasInfo.gElCanvas.height / 2 }
+        pos: { x: 80, y: canvasInfo.gElCanvas.height / 2 }
     }
     return line
 }

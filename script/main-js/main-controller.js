@@ -3,11 +3,19 @@
 var gElCanvas
 var gCtx
 var elImg
+var gElBody=document.querySelector('body')
 function onInit() {
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     elImg = document.querySelector('.starting-img')
+    
     renderGallery()
+    var render=function (){
+        var canvasWidth=gCtx.canvas.width=document.documentElement.clientWidth*0.4
+        gCtx.canvas.height=canvasWidth
+    }
+    window.addEventListener("resize",render)
+    window.addEventListener("resize",renderMeme)
     setInitialMeme()
     renderMeme()
 }
@@ -26,7 +34,6 @@ function renderMeme() {
     meme.lines.forEach(function (line, i) { 
         const currLine=meme.lines[i]
         const{txt,pos,color,size,font,align}=currLine
-        let sameSize=size
         drawText(txt, pos.x, pos.y,color,size,font,align) 
     })
     drawRect(txt,pos.x,pos.y+size/2)
@@ -146,6 +153,8 @@ function onMoveTextVertical(diff) {
 }
 
 function onAddLine(){
+    debugger
+
     addLine()
     renderMeme()
 }

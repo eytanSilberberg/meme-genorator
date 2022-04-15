@@ -43,57 +43,65 @@
             <div class="modal flex layout">
 
                 <!-- canvas -->
-                <div class="canvas-container">
+                <div class="canvas-container flex justify-center align-center">
                     <button onclick="onCloseModal()" class="close-modal">X</button>
-                    <canvas width="450" height="450" tabindex="1"></canvas>
+                    <canvas width="400" height="400" tabindex="1" class="greater-canvas"></canvas>
+
                 </div>
 
                 <!-- editor -->
-                <div class="meme-editor">
-                    <div class="flex column justify-center align-center flex column">
-                        <span>Change meme inner Text</span>
-                        <input type="text" onchange="onSetLineTxt(this.value)">
+                <div class="editor-wrapper">
+                    <div class="meme-editor">
+                        <div class="flex column justify-center align-center flex column">
+                            <span>Change meme inner Text</span>
+                            <input type="text" onchange="onSetLineTxt(this.value)">
+                        </div>
+                        <div class="color-picker flex justify-center align-center">
+                            <span>Choose a color</span>
+                            <input type="color" onchange="onSetTextColor(this.value)">
+                        </div>
+                        <div class="font-size-buttons flex justify-center align-center">
+                            <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(1)">+</button>
+                            <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(-1)">-</button>
+                        </div>
+                        <div class="flex align-center justify-center">
+                            <button class="canvas-editor-button" onclick="onSwitchLines()">⇵</button>
+                        </div>
+                        <div class=" change-text-align-buttons flex justify-center align-center">
+                            <button onclick="onChangeTextAlign('start')" class="canvas-editor-button"><img
+                                    class="editor-img" src="imgs/editor-sybols/icons8-align-left-24.png"
+                                    alt=""></button>
+                            <button onclick="onChangeTextAlign('center')" class="canvas-editor-button"><img
+                                    class="editor-img" src="imgs/editor-sybols/icons8-align-justify-24.png"
+                                    alt=""></button>
+                            <button onclick="onChangeTextAlign('end')" class="canvas-editor-button"><img
+                                    class="editor-img" src="imgs/editor-sybols/icons8-align-right-24.png"
+                                    alt=""></button>
+                        </div>
+                        <div class="move-lines-buttons flex justify-center align-center">
+                            <button onclick="onMoveTextVertical(-10)">⇧</button>
+                            <button onclick="onMoveTextVertical(10)">⇩</button>
+                        </div>
+                        <div class="flex justify-center align-center">
+                            <select name="font-family" id="" onchange="onChangeFontFamily(this.value)">
+                                <option value="impact">Impact</option>
+                                <option value="helvetica">Helvetica</option>
+                                <option value="helvetica Neue">Helvetica Neue</option>
+                                <option value="Courier New">Courier New</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Arial">Arial</option>
+                            </select>
+                        </div>
+                        <div class="line-amount-wrapper flex justify-center align-center">
+                            <a class="designed-buttons" href="#" onclick="onAddLine()">Add Line</a>
+                            <a class="designed-buttons" href="#" onclick="onDeleteLine()">Delete Line</a>
+                        </div>
+                        <div class="flex justify-center align-center">
+                            <a class="designed-buttons download-button download-button flex justify-center align-center "
+                                href="#" onclick="onDownloadMeme(this)" download="meme.jpg">Download
+                                meme</a>
+                        </div>
                     </div>
-                    <div class="color-picker flex justify-center align-center">
-                        <span>Choose a color</span>
-                        <input type="color" onchange="onSetTextColor(this.value)">
-                    </div>
-                    <div class="font-size-buttons">
-                        <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(1)">+</button>
-                        <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(-1)">-</button>
-                    </div>
-                    <button class="canvas-editor-button" onclick="onSwitchLines()"><img class="editor-img"
-                            src="imgs/editor-sybols/icons8-up-down-arrow-50.png" alt=""></button>
-                    <div class="change-text-align-buttons">
-                        <button onclick="onChangeTextAlign('start')" class="canvas-editor-button"><img
-                                class="editor-img" src="imgs/editor-sybols/icons8-align-left-50.png" alt=""></button>
-                        <button onclick="onChangeTextAlign('center')" class="canvas-editor-button"><img
-                                class="editor-img" src="imgs/editor-sybols/icons8-align-justify-50.png" alt=""></button>
-                        <button onclick="onChangeTextAlign('end')" class="canvas-editor-button"><img class="editor-img"
-                                src="imgs/editor-sybols/icons8-align-right-50.png" alt=""></button>
-                    </div>
-                    <div class="move-lines-buttons">
-                        <button onclick="onMoveTextVertical(-10)"><img src="imgs/editor-sybols/icons8-up-50.png"
-                                class="editor-img" alt=""></button>
-                        <button onclick="onMoveTextVertical(10)"><img src="imgs/editor-sybols/icons8-down-50.png"
-                                class="editor-img" alt=""></button>
-                    </div>
-                    <select name="font-family" id="" onchange="onChangeFontFamily(this.value)">
-                        <option value="impact">Impact</option>
-                        <option value="helvetica">Helvetica</option>
-                        <option value="helvetica Neue">Helvetica Neue</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Arial">Arial</option>
-                    </select>
-                    <div class="line-amount-wrapper flex justify-center align-center">
-                        <a class="designed-buttons" href="#" onclick="onAddLine()">Add Line</a>
-                        <a class="designed-buttons" href="#" onclick="onDeleteLine()">Delete Line</a>
-                    </div>
-
-                    <a class="designed-buttons download-button download-button flex justify-center align-center "
-                        href="#" onclick="onDownloadMeme(this)" download="meme.jpg">Download
-                        meme</a>
                 </div>
             </div>
         </div>
