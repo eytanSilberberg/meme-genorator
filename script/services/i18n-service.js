@@ -3,7 +3,6 @@
 var gCurrLang = 'en-us'
 
 function doTrans(lang) {
-    // setPriceByLang(lang)
     const els = document.querySelectorAll('[data-trans]')
     els.forEach(el => {
         const transKey = el.dataset.trans

@@ -19,7 +19,105 @@ header {
     width: 100%;
 }
 
+
+
+.pages-list {
+    flex-direction: column;
+    padding-top: 40px;
+    justify-content: start;
+    align-items: center;
+    position: fixed;
+    background-color: aliceblue;
+    height: 100vh;
+    width: 200px;
+    right: -100%;
+    top: 0
+}
+
+.menu-shadow {
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.252);
+    left: 0;
+    top: 0;
+}
+
+.menu-shadow.appear {
+    animation-name: shadow-appearance;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    display: block;
+    opacity: 1;
+}
+
 .pages-list li a {
-    padding-inline-end: 2rem;
+
     color: var(--clr1);
+
+}
+
+.pages-list li {
+    padding-block-end: 20px;
+}
+
+.pages-list.appear {
+    animation-name: modal-appearance;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes navbar-appearance {
+    from {
+        right: -100%;
+    }
+
+    to {
+        right: 0;
+    }
+}
+
+
+@keyframes shadow-appearance {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width:750px) {
+    .pages-list {
+        flex-direction: row;
+        padding-top: 0;
+        position: static;
+        background-color: inherit;
+        height: 0;
+        width: 100px;
+        right: 0;
+        top: 0
+    }
+
+    .toggle-nav-bar-btn {
+        display: none;
+    }
+
+    .pages-list li {
+        padding-block-end: 0;
+        padding-inline-end: 20px;
+    }
+
+    .pages-list ul {
+        display: flex;
+
+        padding-inline-end: 20px;
+    }
+
+
+
 }

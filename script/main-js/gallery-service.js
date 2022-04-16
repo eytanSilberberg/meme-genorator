@@ -46,11 +46,4 @@ function searchBy(value) {
         })
         return acc
     }, [])
-    //     gImgs.forEach(function (img) {
-    //         if (img.keywords.includes(value)) {
-    //             imgsToDisplay.push(img)
-    //         }
-    //    }
-    // )
-    // gImgs = imgsToDisplay
 }

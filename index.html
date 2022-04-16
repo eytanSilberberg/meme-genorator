@@ -16,6 +16,8 @@
         <div class="header-content-wrapper layout flex space-between align-center">
             <div class="logo-wrapper"><img class="logo" src="imgs/LOGO/LOGO.png" alt=""></div>
             <div class="pages-buttons-wrapper ">
+                <span onclick="onToggleNav()" class="toggle-nav-bar-btn">☰</span>
+                <div onclick="onCloseMenuShadowModal()" class="menu-shadow"></div>
                 <ul class="pages-list clean-list flex">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
@@ -39,7 +41,6 @@
                     <option value="movies"></option>
                 </datalist>
             </div>
-            <button class="Share-btn">Share MemeGene</button>
 
     </section>
 
@@ -101,9 +102,7 @@
                             <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(1)">+</button>
                             <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(-1)">-</button>
                         </div>
-                        <!-- <div class="flex align-center justify-center">
-                            <button class="canvas-editor-button" onclick="onSwitchLines()">⇵</button>
-                        </div> -->
+
                         <div class=" change-text-align-buttons flex justify-center align-center">
                             <button onclick="onChangeTextAlign('start')" class="canvas-editor-button"><img
                                     class="editor-img" src="imgs/editor-sybols/icons8-align-left-24.png"
@@ -138,9 +137,6 @@
                             <a class="designed-buttons download-button download-button flex justify-center align-center "
                                 href="#" onclick="onDownloadMeme(this)" download="meme.jpg">Download
                                 meme</a>
-                        </div>
-                        <div class="line-rotate">
-                            <a href="#" onclick="onRotateText()">Rotate Text</a>
                         </div>
                         <div class="flex justify-center align-center">
                             <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>

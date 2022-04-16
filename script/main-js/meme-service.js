@@ -128,7 +128,6 @@ function randomizeMeme(idx) {
         gMeme.lines = [createLine()]
         gMeme.lines[0].pos.y = 50
     }
-    // gMeme.lines.pop()
     const canvasInfo = getCanvasInfo()
     gMeme.selectedImgId = idx
     const amountOfTextLines = getRandomIntExclusive(0, 2)

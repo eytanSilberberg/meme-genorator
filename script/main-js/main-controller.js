@@ -21,7 +21,6 @@ function onInit() {
     window.addEventListener("resize",render)
     window.addEventListener("resize",renderMeme)
     render()
-    // window.addEventListener("resize",render)
     addEventListeners()
     setRandText()
     setInitialMeme()
@@ -30,22 +29,8 @@ function onInit() {
 }
 
 function addEventListeners(){
-    const elShareBtn=document.querySelector('share-btn')
     addMouseListeners()
     addTouchListeners()
-    // elShareBtn.addEventListener('click',event=>{
-    //     if(navigator.share){
-    //         navigator.share({
-    //             text:'Please Share MemeGene',
-    //             url:'https://eytansilberberg.github.io/meme-genorator/'
-    //         }).then(()=>{
-    //             console.log('thanks for')
-    //         })
-    //         .catch((err)=>console.error(err));
-    //     }else{
-    //         alert('share is not possible')
-    //     }
-    // })
 }
 
 
@@ -111,10 +96,7 @@ function renderMeme() {
     }else{
         elImg.src=gUploadedImg.src
     }
-    
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-
-    // saveAndRestoreExample()
     meme.lines.forEach(function (line, i) { 
         const currLine=meme.lines[i]
         const{txt,pos,color,size,font,align,rotate}=currLine
@@ -127,16 +109,12 @@ function renderMeme() {
 // ******ACTIONS IN EVERY MEME RENDOR*********
 
 function drawText(txt, x, y, color, fontSize,fontStyle,alignValue,rotate) {
-    // gCtx.closePath()
     gCtx.beginPath()
-
     gCtx.lineWidth = 1;
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = alignValue;
     gCtx.fillStyle = color;
     gCtx.font = `${fontSize}px ${fontStyle}`;
-    // gCtx.translate(x,y)
-    // gCtx.rotate(rotate)
     gCtx.fillText(txt, x, y);
     gCtx.strokeStyle = 'black';
     gCtx.strokeText(txt, x, y);
@@ -192,7 +170,6 @@ function clearCanvas() {
 
 function renderGallery() {
     const elGallery = document.querySelector('.gallery-wrapper')
-    //  debugger
     var imgs = getImgs()
     var strHTML = imgs.map(img => `
     <img  onclick="onSelectImg('${img.id}')" class="gallery-img" src="${img.url} "alt="">`
@@ -205,14 +182,12 @@ function renderGallery() {
 function onSelectImg(idNum) {
     gUploadedImg=null
     onOpenModal()
-    // debugger
     var imgs = getImgs()
     var requestedImg = imgs.find(img => img.id === idNum)
     const { imgNum } = requestedImg
     elImg.src = requestedImg.url
     clearCanvas()
     setNewImgTexts()
-    // setLineTxt('enterTxt')
     const meme = getMeme()
     meme.selectedImgId = imgNum
     renderMeme()
@@ -286,7 +261,6 @@ function onCloseModal(){
 function uploadImg() {
     const imgDataUrl = gElCanvas.toDataURL("image/jpeg");
 
-    // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         
@@ -331,7 +305,6 @@ function loadImageFromInput(ev, onImageReady) {
     
         reader.onload = (event) => {
             var img = new Image()
-                // Render on canvas
             img.src = event.target.result
             gUploadedImg=img
             img.onload = onImageReady.bind(null, img)
@@ -362,6 +335,21 @@ function onRotateText(){
     rotateText()
 }
 
+
+function onToggleNav(){
+    const elNav=document.querySelector('.pages-list')
+    const elMenuShadow=document.querySelector('.menu-shadow')
+    elMenuShadow.classList.add('appear')
+    elNav.classList.add('appear')
+}
+
+function onCloseMenuShadowModal(){
+    const elNav=document.querySelector('.pages-list')
+    elNav.classList.remove('appear')
+    const elMenuShadow=document.querySelector('.menu-shadow')
+    elMenuShadow.classList.remove('appear')
+
+}
 
 
 

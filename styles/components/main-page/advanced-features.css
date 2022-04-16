@@ -15,8 +15,6 @@
     visibility: hidden;
 }
 
-
-
 .file-input-btn::before {
     content: 'Add Your own picture to canvas';
     background-color: var(--clr1);
