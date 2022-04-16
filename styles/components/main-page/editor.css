@@ -36,6 +36,14 @@
     align-items: center;
 }
 
+.btn.designed-buttons {
+    background-color: rgb(46, 149, 34);
+
+    padding-inline-start: 20px;
+
+    color: antiquewhite;
+}
+
 canvas {
     margin-top: 10px;
 }
@@ -47,8 +55,8 @@ canvas {
 }
 
 .change-text-align-buttons button img {
-    width: 30px;
-    height: 30px;
+    width: 10px;
+    height: 10px;
     margin: 0 10px;
 }
 
