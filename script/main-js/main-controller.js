@@ -33,19 +33,19 @@ function addEventListeners(){
     const elShareBtn=document.querySelector('share-btn')
     addMouseListeners()
     addTouchListeners()
-    elShareBtn.addEventListener('click',event=>{
-        if(navigator.share){
-            navigator.share({
-                text:'Please Share MemeGene',
-                url:'https://eytansilberberg.github.io/meme-genorator/'
-            }).then(()=>{
-                console.log('thanks for')
-            })
-            .catch((err)=>console.error(err));
-        }else{
-            alert('share is not possible')
-        }
-    })
+    // elShareBtn.addEventListener('click',event=>{
+    //     if(navigator.share){
+    //         navigator.share({
+    //             text:'Please Share MemeGene',
+    //             url:'https://eytansilberberg.github.io/meme-genorator/'
+    //         }).then(()=>{
+    //             console.log('thanks for')
+    //         })
+    //         .catch((err)=>console.error(err));
+    //     }else{
+    //         alert('share is not possible')
+    //     }
+    // })
 }
 
 
