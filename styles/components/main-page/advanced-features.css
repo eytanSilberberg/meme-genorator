@@ -32,7 +32,7 @@
     padding: 1rem 3rem;
 }
 
-@media (min-width:700px) {
+@media (min-width:900px) {
     .advanced-features {
 
         flex-direction: row;
