@@ -10,6 +10,8 @@
 </head>
 
 <body onload="onInit()">
+
+    <!-- HEADER SECTION -->
     <header>
         <div class="header-content-wrapper layout flex space-between align-center">
             <div class="logo-wrapper"><img class="logo" src="imgs/LOGO/LOGO.png" alt=""></div>
@@ -22,19 +24,64 @@
         </div>
     </header>
 
+
+    <!-- SEARCH SECTION -->
     <section class="search-section">
         <div class="search-section-wrapper layout flex space-between">
-            <div><span>Enter search by</span><input type="text"></div>
-            <div class="filter-by-wrapper">I am the filter wrapper</div>
+            <div><label for="keyword-search"> search keyword</label>
+                <input oninput="onSearchBy(this.value)" list="keyword-options" id="keyword-search"
+                    name="keyword-search" />
+                <datalist id="keyword-options">
+                    <option value="funny"></option>
+                    <option value="cat"></option>
+                    <option value="baby"></option>
+                    <option value="politics"></option>
+                    <option value="movies"></option>
+                </datalist>
+            </div>
+            <div class="filter-by-wrapper">
+                <span>Find by keyword</span>
+                <select onchange="onFilterBy(this.value)" name="filterBy" id="">
+                    <option value="">All</option>
+                    <option value="funny">funny</option>
+                    <option value="cat">cat</option>
+                    <option value="baby">baby</option>
+                    <option value="politics">politics</option>
+                    <option value="movies">movies</option>
+                </select>
+            </div>
         </div>
     </section>
-    <section class="gallery-wrapper layout">I am the gallery wrapper</section>
+
+
+    <!-- ADVANCED FEATURES -->
+    <section class="advanced-features layout flex justify-center align-center">
+        <a href="#" onclick="onRandomMeme()">Im
+            flexible</a>
+        <input type="file" class="file-input-btn" name="image" onchange="onImgInput(event)" />
+        <button class="Share-btn">Share MemeGene</button>
+    </section>
+
+
+    <!-- GALLERY SECTION-->
+    <section class="gallery-wrapper layout"></section>
+
+
+    <!-- FOOTER SECTION -->
     <footer class="flex justify-center align-center">
-        <div class="footer-wrapper layout "> I am the Footer</div>
+        <div class="footer-wrapper layout flex column justify-center align-center ">
+            <img class="logo-footer" src="imgs/LOGO/LOGO.png" alt="">
+            <ul class="flex clean-list">
+                <li><img src="imgs/LOGO/facebook-logo-png-38347.png" alt=""></li>
+                <li><img src="imgs/LOGO/instagram-icon-960.png" alt=""></li>
+                <li><img src="imgs/LOGO/twitter-icon-66.png" alt=""></li>
+            </ul>
+        </div>
     </footer>
 
 
 
+    <!-- MEME EDITOR SECTION -->
     <section class="meme-editor-wrapper flex justify-center align-center hide">
         <!-- shadow -->
         <div class="shadow show-shadow"></div>
@@ -54,11 +101,11 @@
                     <div class="meme-editor">
                         <div class="flex column justify-center align-center flex column">
                             <span>Change meme inner Text</span>
-                            <input type="text" onchange="onSetLineTxt(this.value)">
+                            <input class="text-input" type="text" oninput="onSetLineTxt(this.value)">
                         </div>
                         <div class="color-picker flex justify-center align-center">
                             <span>Choose a color</span>
-                            <input type="color" onchange="onSetTextColor(this.value)">
+                            <input type="color" oninput="onSetTextColor(this.value)">
                         </div>
                         <div class="font-size-buttons flex justify-center align-center">
                             <button class="canvas-editor-button font-size-button" onclick="onSetFontSize(1)">+</button>
@@ -101,6 +148,17 @@
                             <a class="designed-buttons download-button download-button flex justify-center align-center "
                                 href="#" onclick="onDownloadMeme(this)" download="meme.jpg">Download
                                 meme</a>
+                        </div>
+                        <div class="line-rotate">
+                            <a href="#" onclick="onRotateText()">Rotate Text</a>
+                        </div>
+                        <div class="flex justify-center align-center">
+                            <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
+
+                            <p class="user-msg"></p>
+                            <div class="share-container"></div>
+
+
                         </div>
                     </div>
                 </div>

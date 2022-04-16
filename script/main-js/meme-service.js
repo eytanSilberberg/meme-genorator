@@ -1,12 +1,14 @@
 'use strict'
 var gMeme
+var gText
 
 
 
 function setInitialMeme() {
     const canvasInfo = getCanvasInfo()
     gMeme = {
-        selectedImgId: 1,
+        isMemeDrag: false,
+        selectedImgId: null,
         selectedLineIdx: 0,
         lines: [
             {
@@ -15,16 +17,9 @@ function setInitialMeme() {
                 align: 'start',
                 color: 'white',
                 font: 'impact',
-                pos: { x: 10, y: 50 }
+                pos: { x: 10, y: 50 },
+                rotate: (Math.PI)
             }
-            // {
-            //     txt: 'EnterTxt',
-            //     size: 20,
-            //     align: 'start',
-            //     color: 'white',
-            //     font: 'impact',
-            //     pos: { x: 80, y: canvasInfo.gElCanvas.height - 50 }
-            // }
         ]
     }
 }
@@ -71,8 +66,20 @@ function changeFontFamily(value) {
 }
 
 
-function changeTextALign(value) {
+function changeTextAlign(value) {
+    const canvasInfo = getCanvasInfo()
     gMeme.lines[gMeme.selectedLineIdx].align = value
+    switch (value) {
+        case 'start':
+            gMeme.lines[gMeme.selectedLineIdx].pos.x = 50
+            break;
+        case 'center':
+            gMeme.lines[gMeme.selectedLineIdx].pos.x = canvasInfo.gElCanvas.width / 2
+            break;
+        case 'end':
+            gMeme.lines[gMeme.selectedLineIdx].pos.x = canvasInfo.gElCanvas.width - 50
+            break;
+    }
 }
 
 function moveTextVertical(diff) {
@@ -116,4 +123,47 @@ function getLineIdx(id) {
     return requestedLineIdx
 }
 
+function randomizeMeme(idx) {
+    if (gMeme.lines.length >= 2) {
+        gMeme.lines = [createLine()]
+        gMeme.lines[0].pos.y = 50
+    }
+    // gMeme.lines.pop()
+    const canvasInfo = getCanvasInfo()
+    gMeme.selectedImgId = idx
+    const amountOfTextLines = getRandomIntExclusive(0, 2)
+    const randTxt = gText.splice(getRandomIntExclusive(0, gText.length) - 1, 1)
 
+    gMeme.lines[0].txt = randTxt
+    console.log(randTxt)
+    if (amountOfTextLines === 1) {
+        gMeme.lines.push(createLine())
+        gMeme.lines[1].txt = gText.splice(getRandomIntExclusive(0, gText.length) - 1, 1)
+        gMeme.lines[1].pos.y = canvasInfo.gElCanvas.height - 30
+    }
+    setRandText()
+}
+
+function setRandText() {
+    gText = ['out of all the flavors you choose to be salty!', 'frankley my dear, I dont give a damn', 'troo face', 'I\'m so popular', 'Smell ya later']
+}
+
+function setMemeDrag(value) {
+    gMeme.isMemeDrag = value
+}
+
+function moveMeme(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+}
+
+
+function isMemeClicked(clickedPos) {
+    const { pos } = gMeme.lines[gMeme.selectedLineIdx]
+    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    return distance <= gMeme.lines[gMeme.selectedLineIdx].size
+}
+
+function rotateText() {
+
+}

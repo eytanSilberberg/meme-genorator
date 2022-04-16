@@ -1,0 +1,30 @@
+.advanced-features {
+    padding-top: 10px;
+
+}
+
+.advanced-features a {
+    margin: 0 5rem;
+    background-color: var(--clr4);
+    padding: 1rem 3rem;
+    border-radius: 20px;
+}
+
+.file-input-btn::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+
+
+.file-input-btn::before {
+    content: 'Add Your own picture to canvas';
+    background-color: var(--clr1);
+    font-size: initial;
+    font-family: arvo;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.advanced-features>* {
+    padding: 1rem 3rem;
+}

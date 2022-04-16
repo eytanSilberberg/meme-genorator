@@ -209,7 +209,7 @@ canvas {
     display: grid;
     height: 200px;
 
-    grid-template-rows: repeat(auto-fill, minmax(50px, 300px));
+    grid-template-rows: repeat(auto-fill, minmax(50px, 200px));
     grid-gap: 5px;
 }
 
@@ -292,15 +292,19 @@ canvas {
 
 @media (min-width:750px) {
     .meme-editor {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (min-width:1000px) {
+@media (min-width:1150px) {
 
     .modal {
         flex-direction: row;
         /* position: absolute; */
+    }
+
+    canvas {
+        margin-inline-end: 30px;
     }
 
     .meme-editor {
